@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="patient.medikeen.com.myapplication.PrescriptionActivity">
+
+    <ImageView
+        android:id="@+id/prescription_imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <LinearLayout
+        android:id="@+id/action_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#50000000"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/valid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Valid" />
+
+            <Button
+                android:id="@+id/invalid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Invalid" />
+        </LinearLayout>
+
+        <!-- VALID -->
+
+        <LinearLayout
+            android:id="@+id/valid_holder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter your Amount"
+                android:inputType="phone"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <!-- INVALID -->
+
+        <LinearLayout
+            android:id="@+id/invalid_holder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <RadioGroup
+                android:id="@+id/reason_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/reason1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reason 1"
+                    android:textColor="#ffffff" />
+
+                <RadioButton
+                    android:id="@+id/reason2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reason 2"
+                    android:textColor="#ffffff" />
+
+                <RadioButton
+                    android:id="@+id/reason3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reason 3"
+                    android:textColor="#ffffff" />
+
+                <RadioButton
+                    android:id="@+id/reason4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reason 5"
+                    android:textColor="#ffffff" />
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/invalid_comments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Comments"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE" />
+
+    </LinearLayout>
+</FrameLayout>
