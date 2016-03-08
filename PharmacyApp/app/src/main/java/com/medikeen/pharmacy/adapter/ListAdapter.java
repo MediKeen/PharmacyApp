@@ -130,10 +130,10 @@ public class ListAdapter extends ArrayAdapter<PrescriptionBean> {
                     context.startActivity(intent);
                 } else if (orderStatusButtonText.equalsIgnoreCase("ProcessingPrescription")) {
                     orderStatus = "OutForDelivery";
-                    customDialogStatus();
+                    customDialogStatus(position);
                 } else if (orderStatusButtonText.equalsIgnoreCase("OutForDelivery")) {
                     orderStatus = "Delivery";
-                    customDialogStatus();
+                    customDialogStatus(position);
                 } else if (orderStatusButtonText.equalsIgnoreCase("Delivery")) {
                     customDialog(position);
                 }
@@ -142,7 +142,7 @@ public class ListAdapter extends ArrayAdapter<PrescriptionBean> {
         return convertView;
     }
 
-    public void customDialogStatus() {
+    public void customDialogStatus(final int position) {
         final Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.custom_dialog_status);
@@ -153,7 +153,7 @@ public class ListAdapter extends ArrayAdapter<PrescriptionBean> {
         dialog_ok.setOnClickListener(new View.OnClickListener() {
                                          @Override
                                          public void onClick(View v) {
-                                             new UpdateStatusAsync().execute();
+                                             new UpdateStatusAsync(position).execute();
                                              dialog.dismiss();
                                          }
                                      }
@@ -187,11 +187,11 @@ public class ListAdapter extends ArrayAdapter<PrescriptionBean> {
                                              if (failed.isChecked()) {
                                                  orderStatus = "DeliveryFailed";
                                                  list.remove(position);
-                                                 new UpdateStatusAsync().execute();
+                                                 new UpdateStatusAsync(position).execute();
                                              } else if (success.isChecked()) {
                                                  orderStatus = "Delivered";
                                                  list.remove(position);
-                                                 new UpdateStatusAsync().execute();
+                                                 new UpdateStatusAsync(position).execute();
                                              }
                                              dialog.dismiss();
                                          }
@@ -202,6 +202,11 @@ public class ListAdapter extends ArrayAdapter<PrescriptionBean> {
     }
 
     class UpdateStatusAsync extends AsyncTask<Void, Void, Void> {
+
+        private int _position;
+        public UpdateStatusAsync(int position) {
+            _position = position;
+        }
 
         @Override
         protected void onPreExecute() {
@@ -289,6 +294,7 @@ public class ListAdapter extends ArrayAdapter<PrescriptionBean> {
             }
 
             if ((success != null) && success.equalsIgnoreCase("true")) {
+                list.get(_position).setOrder_status(orderStatus);
                 notifyDataSetChanged();
             } else {
                 Log.e("UDPATE STATUS RESP: ", "UDPATE STATUS RESP: " + errorMessage);
