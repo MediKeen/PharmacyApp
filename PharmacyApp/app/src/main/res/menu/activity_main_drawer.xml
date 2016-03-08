@@ -18,6 +18,10 @@
             android:id="@+id/nav_about_us"
             android:icon="@drawable/ic_account_circle_black_24dp"
             android:title="About Us" />
+        <item
+            android:id="@+id/nav_log_out"
+            android:icon="@drawable/ic_power_settings_new_black_24dp"
+            android:title="Logout" />
     </group>
 
 </menu>

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="patient.medikeen.com.myapplication.PrescriptionActivity">
 
-    <ImageView
+    <it.sephiroth.android.library.imagezoom.ImageViewTouch
         android:id="@+id/prescription_imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
@@ -80,28 +80,28 @@
                     android:id="@+id/reason1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Reason 1"
+                    android:text="Not a Prescription"
                     android:textColor="#ffffff" />
 
                 <RadioButton
                     android:id="@+id/reason2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Reason 2"
+                    android:text="Hazy Prescription"
                     android:textColor="#ffffff" />
 
                 <RadioButton
                     android:id="@+id/reason3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Reason 3"
+                    android:text="Old Prescription"
                     android:textColor="#ffffff" />
 
                 <RadioButton
                     android:id="@+id/reason4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Reason 5"
+                    android:text="Incomplete Prescription (Data Missing)"
                     android:textColor="#ffffff" />
 
             </RadioGroup>
